@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Základy geografie</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<!-- Navigace -->
+<header>
+
+
+    <div class="navbar">
+        <div class="logo">Socioekonomická geografie</div>
+        <ul>
+            <li><a href="index.html">Domů</a></li>
+            <li><a href="zaklady.html" class="active">Základy geografie</a></li>
+            <li><a href="Statistika.html">Statistika</a></li>
+            <li><a href="gis.html">GIS</a></li>
+            <li><a href="informace.html">Další informace</a></li>
+        </ul>
+    </div>
+</header>
+
+<!-- Obsah stránky -->
+<main>
+    <section class="info-section">
+        <h1>Základy geografie</h1>
+
+        <!-- 🗺️ Co je geografie -->
+        <div class="info-box">
+            <h2>Co je geografie?</h2>
+            <p>
+                <strong>Geografie</strong> je věda, která se zabývá studiem Země, její krajiny, obyvatel a vztahů mezi člověkem a prostředím.
+                Pomáhá nám pochopit, proč svět vypadá tak, jak vypadá – proč jsou některé oblasti hustě osídlené,
+                jiné pusté, proč se mění klima, a jak lidé ovlivňují své okolí.
+            </p>
+            <p>
+                Geografie propojuje přírodní a společenské vědy – zkoumá přírodu i lidskou činnost jako celek.
+                Díky tomu nám umožňuje porozumět souvislostem mezi krajinou, ekonomikou, kulturou a životním stylem lidí.
+            </p>
+        </div>
+
+        <!-- 🌍 Základní pojmy v geografii -->
+        <div class="info-box">
+            <h2>Základní pojmy v geografii</h2>
+            <ul class="geo-list">
+                <li><strong>
+                    <a href="https://cs.wikipedia.org/wiki/Mapa"
+                       target="_blank"
+                       class="gis-link"><strong>Mapa</strong></a>
+                </strong> – zmenšený a zjednodušený obraz Země nebo její části.</li>
+                <li><strong>
+                    <a href="https://cs.wikipedia.org/wiki/Region"
+                       target="_blank"
+                       class="gis-link"><strong>Region</strong></a>
+                </strong> – území, které má společné přírodní, kulturní nebo ekonomické znaky.</li>
+                <li><strong>
+                    <a href="https://cs.wikipedia.org/wiki/Demografie"
+                       target="_blank"
+                       class="gis-link"><strong>Demografie</strong></a>
+                </strong> – věda zabývající se obyvatelstvem, jeho strukturou a vývojem.</li>
+                <li><strong>
+                    <a href="https://cs.wikipedia.org/wiki/Prostor_(geografie)"
+                               target="_blank"
+                               class="gis-link"><strong>Prostor</strong></a></strong> – základní pojem geografie, který vyjadřuje vzájemné vztahy mezi objekty na Zemi.</li>
+                <li><strong>
+                    <a href="https://cs.wikipedia.org/wiki/Globalizace"
+                       target="_blank"
+                       class="gis-link"><strong>Globalizace</strong></a>
+                </strong> – proces, při kterém se svět stává stále více propojeným.</li>
+                <li><strong>
+                    <a href="https://cs.wikipedia.org/wiki/Udr%C5%BEiteln%C3%BD_rozvoj"
+                       target="_blank"
+                       class="gis-link"><strong>Udržitelný rozvoj</strong></a>
+                </strong> – rozvoj, který naplňuje potřeby současnosti, aniž by ohrozil možnosti budoucích generací.</li>
+            </ul>
+        </div>
+
+        <!-- 🌐 Propojení -->
+        <div class="info-box">
+            <h2>Proč je geografie důležitá?</h2>
+            <p>
+                Geografie nám pomáhá chápat svět kolem nás, přemýšlet o souvislostech a nacházet rovnováhu mezi rozvojem společnosti a ochranou přírody.
+                Pomáhá při plánování měst, dopravních sítí, hospodaření s vodou nebo ochraně krajiny.
+            </p>
+            <p>
+                Díky geografii si uvědomujeme, že každý náš čin má dopad – lokální i globální.
+                A právě v tom spočívá její krása: učí nás vidět svět jako propojený systém.
+            </p>
+        </div>
+
+
+        <!-- 🗺️ Interaktivní slepá mapa České republiky -->
+        <div class="info-box">
+            <h2>Vyzkoušejte své znalosti krajů České republiky</h2>
+            <p>Klikněte na mapu a vyzkoušejte se v rozpoznávání krajů České republiky.</p>
+
+            <div class="interactive-map">
+                <iframe
+                        src="https://www.umimefakta.cz/zemepis/slepe-mapy-cr-kraje-1-uroven"
+                        loading="lazy"
+                        allowfullscreen
+                ></iframe>
+            </div>
+        </div>
+
+</main>
+
+<footer>
+    © 2025 Socioekonomická geografie | Všechna práva vyhrazena
+</footer>
+<script>
+    document.querySelectorAll('.geo-list li').forEach((item) => {
+        item.addEventListener('mousemove', (e) => {
+            const rect = item.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            item.style.setProperty('--x', `${x}px`);
+            item.style.setProperty('--y', `${y}px`);
+        });
+    });
+</script>
+<audio id="click-sound" src="click.mp3" preload="auto"></audio>
+<script src="script.js"></script>
+</body>
+</html>

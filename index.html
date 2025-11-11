@@ -1,5 +1,113 @@
-<html>
-  <body>
-    <h1>!</h1>
-  </body>
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socioekonomická geografie</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<!-- ======== Navigace ======== -->
+<div class="background"></div>
+
+<header>
+
+    <script>
+        // === Přepínání mezi světlým a tmavým motivem ===
+        const toggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Načti uložené nastavení
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            toggle.textContent = '☀️';
+        }
+
+        // Přepínání po kliknutí
+        toggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            toggle.textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    </script>
+
+    <nav class="navbar">
+        <h1 class="logo">Socioekonomická geografie</h1>
+        <ul>
+            <li><a href="index.html" class="active">Domů</a></li>
+            <li><a href="zaklady.html">Základy geografie</a></li>
+            <li><a href="Statistika.html">Statistika</a></li>
+            <li><a href="gis.html">GIS</a></li>
+            <li><a href="informace.html">Další informace</a></li>
+        </ul>
+    </nav>
+
+
+</header>
+
+<!-- ======== Hlavní obsah ======== -->
+<main>
+    <section class="intro">
+        <h2>Vítejte v multimediálním systému o socioekonomické geografii!</h2>
+        <p>
+            Tento web je věnován oboru <strong>socioekonomická geografie</strong> – disciplíně, která zkoumá vztahy mezi
+            společností, ekonomikou a prostorem. Ukážeme si, proč je tento předmět důležitý a jak pomáhá chápat fungování světa kolem nás.
+        </p>
+
+        <a href="https://cs.wikipedia.org/wiki/Socioekonomick%C3%A1_geografie"
+           target="_blank"
+           class="main-btn">
+            Zjistit více
+        </a>
+
+    </section>
+
+    <section class="cards">
+        <div class="card">
+            <h3>O čem je tento předmět?</h3>
+            <p>
+                Zabývá se propojením lidí, ekonomik a regionů. Pomáhá pochopit rozdíly v rozvoji jednotlivých oblastí,
+                migraci obyvatel, dostupnost zdrojů a prostorové rozmístění průmyslu či služeb.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Proč je důležitý?</h3>
+            <p>
+                Díky socioekonomické geografii můžeme lépe porozumět tomu, jak ekonomické a společenské procesy ovlivňují naše prostředí
+                a jak můžeme plánovat udržitelný rozvoj regionů.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Jak ji využít?</h3>
+            <p>
+                Znalosti z tohoto oboru využijete v oblasti regionálního plánování, státní správy, environmentálních analýz
+                i při práci s geografickými informačními systémy (GIS).
+            </p>
+        </div>
+    </section>
+
+    <section class="more">
+        <h2>Začněte své poznávání!</h2>
+        <p>Prozkoumejte více o tomto oboru na dalších stránkách:</p>
+        <div class="links">
+            <a href="zaklady.html" class="link-btn">Základy geografie</a>
+            <a href="Statistika.html" class="link-btn">Statistika</a>
+            <a href="gis.html" class="link-btn">GIS</a>
+            <a href="informace.html" class="link-btn">Další informace</a>
+        </div>
+    </section>
+</main>
+
+<!-- ======== Patička ======== -->
+<footer>
+    <p>© 2025 Socioekonomická geografie | Všechna práva vyhrazena</p>
+</footer>
+<audio id="click-sound" src="click.mp3" preload="auto"></audio>
+<script src="script.js"></script>
+</body>
 </html>

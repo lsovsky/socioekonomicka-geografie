@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Statistika</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<!-- Navigace -->
+<header>
+
+
+    <div class="navbar">
+        <div class="logo">Socioekonomická geografie</div>
+        <ul>
+            <li><a href="index.html">Domů</a></li>
+            <li><a href="zaklady.html">Základy geografie</a></li>
+            <li><a href="Statistika.html" class="active">Statistika</a></li>
+            <li><a href="gis.html">GIS</a></li>
+            <li><a href="informace.html">Další informace</a></li>
+        </ul>
+    </div>
+</header>
+
+<!-- Obsah stránky -->
+<main>
+    <section class="info-section">
+        <h1>Statistika v geografii</h1>
+
+        <!-- 1️⃣ Co je statistika -->
+        <div class="info-box">
+            <h2>Co je statistika?</h2>
+            <p>
+                <strong>Statistika</strong> je vědecká disciplína, která se zabývá sběrem, analýzou a interpretací dat.
+                V geografii pomáhá popisovat a vysvětlovat prostorové jevy – například hustotu obyvatelstva,
+                ekonomickou výkonnost regionů nebo úroveň nezaměstnanosti.
+                Díky statistice dokážeme převádět složitá data do přehledných map a grafů, které usnadňují porozumění světu kolem nás.
+            </p>
+        </div>
+
+        <!-- 2️⃣ Český statistický úřad -->
+        <div class="info-box">
+            <h2>Český statistický úřad (ČSÚ)</h2>
+            <p>
+                <strong>Český statistický úřad (ČSÚ)</strong> je hlavní instituce, která shromažďuje, zpracovává a zveřejňuje statistické údaje v České republice.
+                Poskytuje informace o ekonomice, populaci, školství, dopravě, životním prostředí a mnoha dalších oblastech.
+            </p>
+            <p>
+                Data z ČSÚ jsou klíčová pro geografické analýzy – například při zkoumání regionálních rozdílů,
+                hodnocení kvality života nebo plánování rozvoje měst.
+                ČSÚ také spolupracuje s evropským statistickým úřadem Eurostat, aby zajistil srovnatelnost dat mezi zeměmi EU.
+            </p>
+            <p>
+                Oficiální web:
+                <a href="https://www.czso.cz/" target="_blank" class="gis-link"><strong>www.czso.cz</strong></a>
+            </p>
+
+            <!-- 🗺️ Obrázek místo interaktivní mapy -->
+            <div class="iframe-map">
+                <div class="csu-map-wrapper" data-tooltip="Zdroj: ČSÚ – Průměrná hrubá měsíční mzda v Kč, 2025">
+                    <img src="./csu.png" alt="Mapa ČSÚ - zaměstnanost" class="csu-map-img" />
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 3️⃣ LISA sekce -->
+        <div class="info-box lisa-box">
+            <h2>LISA – Local Indicators of Spatial Association</h2>
+
+            <div class="lisa-container">
+                <div class="lisa-text">
+                    <p>
+                        <strong>LISA</strong> je metoda používaná pro identifikaci prostorové
+                        autokorelace – tedy zjišťování, zda jsou podobné hodnoty (např. vysoké či
+                        nízké příjmy, kriminalita, hustota obyvatelstva) soustředěny v určitých
+                        oblastech.
+                    </p>
+
+                    <p>LISA rozděluje území do čtyř kategorií:</p>
+
+                    <ul class="lisa-list">
+                        <li><strong>High–High (HH):</strong> oblasti s vysokými hodnotami obklopené oblastmi s vysokými hodnotami.</li>
+                        <li><strong>Low–Low (LL):</strong> oblasti s nízkými hodnotami obklopené oblastmi s nízkými hodnotami.</li>
+                        <li><strong>High–Low (HL):</strong> oblasti s vysokými hodnotami obklopené nízkými – možný anomální výskyt.</li>
+                        <li><strong>Low–High (LH):</strong> oblasti s nízkými hodnotami obklopené vysokými – také anomálie.</li>
+                    </ul>
+
+                    <p>
+                        Tento nástroj je velmi důležitý v geografii, protože umožňuje vizuálně
+                        identifikovat klíčové prostorové vzorce a odchylky.
+                    </p>
+                </div>
+
+                <!-- ✅ Obrázky napravo -->
+                <div class="lisa-images">
+                    <img src="./lisa_2.png" alt="LISA mapa 1" />
+                    <img src="./lisa.png" alt="LISA mapa 2" />
+                    <img src="./lisa_3.jpg" alt="LISA mapa 3" />
+                </div>
+            </div>
+        </div>
+
+        <!-- 4️⃣ Software ArcGIS vs QGIS -->
+        <div class="info-box">
+            <h2>Software: ArcGIS Pro vs QGIS</h2>
+            <p>
+                V moderní geografii hrají velkou roli specializované programy pro práci s daty a mapami.
+                Nejčastěji se používají dva hlavní systémy: <strong>ArcGIS Pro</strong> (komerční software)
+                a <strong>QGIS</strong> (open-source, tedy zdarma).
+            </p>
+
+            <div class="geo-list">
+                <li>
+                    <strong><a href="https://www.esri.com/en-us/arcgis/products/arcgis-pro/resources"
+                               target="_blank"
+                               class="gis-link">ArcGIS Pro</a></strong> –
+                    profesionální software od společnosti Esri, nabízí velmi široké možnosti analýz, 3D vizualizací,
+                    integraci s databázemi a cloudem. Je ideální pro státní instituce, firmy nebo univerzity,
+                    které pracují s velkými objemy dat a potřebují špičkové analytické nástroje. Nevýhodou je vysoká cena licencí.
+                </li>
+
+                <li>
+                    <strong><a href="https://qgis.org/" target="_blank" class="gis-link">QGIS</a></strong> –
+                    volně dostupný a otevřený software s širokou komunitou uživatelů. Nabízí většinu funkcí,
+                    které ArcGIS má, včetně práce s rastrovými a vektorovými daty, rozšíření pomocí pluginů
+                    a kompatibility s Python skripty. Je ideální pro studenty, neziskové projekty a menší analýzy.
+                </li>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    © 2025 Socioekonomická geografie | Všechna práva vyhrazena
+</footer>
+<audio id="click-sound" src="click.mp3" preload="auto"></audio>
+<script src="script.js"></script>
+</body>
+</html>
