@@ -1,0 +1,1041 @@
+/* ===== Структура страницы ===== */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Основные стили ===== */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+
+    /* новый фон */
+    background:
+            linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)),
+            url("muj_obrazek.webp") no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* ===== Navigace ===== */
+header {
+    background-color: #2f7a43;
+    color: white;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a.active,
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Hlavní sekce ===== */
+main {
+    flex: 1; /* растягиваем контент, чтобы футер был внизу */
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.intro {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-btn {
+    background-color: #2f7a43;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 15px;
+    text-decoration: none; /* 🔹 Убирает подчеркивание */
+    display: inline-block; /* 🔹 Чтобы ссылка выглядела как кнопка */
+}
+
+
+.main-btn:hover {
+    background-color: #256536;
+    text-decoration: none; /* 🔹 Чтобы и при наведении не подчеркивалась */
+}
+
+
+/* ===== Karty ===== */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 40px;
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    flex: 1 1 280px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover h3 {
+    color: #2f7a43;
+    transform: scale(1.05);
+}
+
+/* ===== Sekce s odkazy ===== */
+.more {
+    margin-top: 60px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.link-btn {
+    background-color: #2f7a43;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.link-btn:hover {
+    background-color: #256536;
+}
+
+/* ===== Плавное появление снизу вверх ===== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body * {
+    opacity: 0;
+    animation: fadeUp 1.8s ease-out forwards;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+body *:nth-child(1) { animation-delay: 0.05s; }
+body *:nth-child(2) { animation-delay: 0.10s; }
+body *:nth-child(3) { animation-delay: 0.15s; }
+body *:nth-child(4) { animation-delay: 0.20s; }
+body *:nth-child(5) { animation-delay: 0.25s; }
+body *:nth-child(6) { animation-delay: 0.30s; }
+body *:nth-child(7) { animation-delay: 0.35s; }
+body *:nth-child(8) { animation-delay: 0.40s; }
+body *:nth-child(9) { animation-delay: 0.45s; }
+body *:nth-child(10){ animation-delay: 0.50s; }
+
+/* ===== Свечение кнопок ===== */
+button, .link-btn, .main-btn {
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+button:hover, .link-btn:hover, .main-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 18px rgba(47, 122, 67, 0.45);
+}
+
+button::before, .link-btn::before, .main-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+button:hover::before, .link-btn:hover::before, .main-btn:hover::before {
+    opacity: 1;
+}
+
+/* ===== Не анимировать шапку ===== */
+header, header * {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+}
+
+
+
+
+@keyframes bgFadeIn {
+    0% {
+        opacity: 0;
+        filter: blur(10px);
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1);
+    }
+}
+
+/* ===== Качество текста ===== */
+body, h1, h2, h3, p, b, strong {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+strong, b {
+    font-weight: 700;
+    color: #1a1a1a;
+    text-shadow: 0 0 0.5px rgba(0, 0, 0, 0.2);
+}
+
+* {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* ===== Sekce Další informace ===== */
+.info-section {
+    width: 90%;
+    max-width: 1100px;
+    margin: 50px auto;
+    background-color: #ffffffcc;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 2.5s ease-out;
+}
+
+.info-section h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.info-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.info-image {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.info-image img {
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: transform 0.4s ease;
+}
+
+.info-image img:hover {
+    transform: scale(1.05);
+}
+
+/* ===== Футер ===== */
+footer {
+    background-color: #2f7a43;
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    margin-top: auto;
+    transition: opacity 0.3s ease;
+}
+
+footer:hover {
+    opacity: 0.9;
+}
+
+/* ===== Styl pro textovou stránku Další informace ===== */
+.info-text {
+    line-height: 1.7;
+    font-size: 1.05rem;
+    color: #222;
+    text-align: justify;
+    padding: 20px 30px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-left: 6px solid #2f7a43;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(3px);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    animation: fadeUp 1.5s ease-out forwards;
+}
+
+.info-text:hover {
+    transform: scale(1.01);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.info-text p {
+    margin-bottom: 20px;
+}
+
+.info-section h1 {
+    color: #2f7a43;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Страница Další informace ===== */
+.info-section {
+    width: 90%; /* больше ширины */
+    max-width: 1300px; /* контейнер стал шире */
+    margin: 60px auto;
+    background-color: rgba(255, 255, 255, 0.97);
+    padding: 60px 70px; /* немного больше отступов */
+    border-radius: 14px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+    color: #222;
+    animation: fadeUp 1.5s ease-out forwards;
+}
+
+
+.info-section h1 {
+    text-align: center;
+    color: #2f7a43;
+    margin-bottom: 25px;
+    font-size: 2rem;
+}
+
+.info-box p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    text-align: justify;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.info-box strong {
+    color: #2f7a43;
+}
+
+/* ===== Vložené video sekce ===== */
+.info-video {
+    margin-top: 50px;
+    text-align: center;
+    animation: fadeUp 1.8s ease-out forwards;
+}
+
+.info-video h2 {
+    color: #2f7a43;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+}
+
+.info-video iframe {
+    width: 80%;
+    max-width: 720px;
+    height: 405px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.6s ease;
+}
+
+.info-video iframe:hover {
+    transform: scale(1.02);
+}
+
+.video-caption {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 15px;
+    opacity: 0.8;
+}
+
+/* ===== Stránka GIS ===== */
+.info-box {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-left: 6px solid #2f7a43;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 25px 30px;
+    margin-bottom: 40px;
+    animation: fadeUp 1.5s ease-out forwards;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.info-section {
+    .info-box:hover {
+        transform: scale(1.01);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .info-box h2 {
+        color: #2f7a43;
+        margin-bottom: 10px;
+        font-size: 1.4rem;
+        text-align: left;
+    }
+
+    .info-box p {
+        line-height: 1.6;
+        color: #333;
+        text-align: justify;
+        font-size: 1.05rem;
+    }
+
+    /* ===== Новый фиксированный фон без лагов ===== */
+    .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+                linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)),
+                url("muj_obrazek.webp") center center / cover no-repeat;
+        z-index: -1;
+        opacity: 0;
+        animation: bgFadeIn 2.5s ease-out forwards;
+        filter: blur(1px);
+        will-change: opacity, transform;
+        transform: translateZ(0);
+    }
+
+    /* ===== Ссылка на GIS ===== */
+    .gis-link {
+        color: #2f7a43;
+        text-decoration: none;
+        font-weight: bold;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .gis-link:hover {
+        color: #256536;
+        text-shadow: 0 0 8px rgba(47, 122, 67, 0.4);
+        text-decoration: underline;
+    }
+
+    /* ===== Styl pro seznam pojmů se světelným efektem ===== */
+    .geo-list {
+        list-style: none;
+        padding-left: 0;
+        text-align: left;
+    }
+
+    .geo-list li {
+        position: relative;
+        margin: 10px 0;
+        background-color: #ffffff;
+        padding: 14px 18px;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border-left: 5px solid transparent;
+        overflow: hidden; /* чтобы эффект не выходил за края */
+    }
+
+    /* 🌿 Эффект свечения курсора (тот же стиль, что на кнопках) */
+    .geo-list li::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(47, 122, 67, 0.15), transparent 70%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .geo-list li:hover::before {
+        opacity: 1;
+    }
+
+    .geo-list li:hover {
+        background-color: #f2fff6;
+        border-left: 5px solid #2f7a43;
+        transform: scale(1.02);
+        box-shadow: 0 4px 15px rgba(47, 122, 67, 0.35);
+        cursor: pointer;
+    }
+
+    .geo-list strong {
+        color: #2f7a43;
+    }
+
+    /* ===== Styl pro seznamy uvnitř textů ===== */
+    .info-box ul {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 10px;
+    }
+
+    .info-box ul li {
+        margin: 10px 0;
+        background-color: #ffffff;
+        padding: 12px 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border-left: 5px solid transparent;
+    }
+
+    .info-box ul li:hover {
+        background-color: #f2fff6;
+        border-left: 5px solid #2f7a43;
+        transform: scale(1.02);
+        box-shadow: 0 4px 12px rgba(47, 122, 67, 0.25);
+    }
+
+    /* ===== Animace pro sekce a boxy ===== */
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Plynulé zobrazení všech sekcí */
+    .info-section,
+    .info-box,
+    .geo-list li {
+        opacity: 0;
+        animation: fadeUp 1.2s ease-out forwards;
+    }
+
+    /* Krásná "vlnka" – zpoždění pro každý blok */
+    .info-box:nth-child(1) { animation-delay: 0.1s; }
+    .info-box:nth-child(2) { animation-delay: 0.25s; }
+    .info-box:nth-child(3) { animation-delay: 0.4s; }
+    .info-box:nth-child(4) { animation-delay: 0.55s; }
+
+    /* Efekt při hoveru – světло jako na Základy */
+    .info-box:hover {
+        background-color: #f6fff8;
+        transform: scale(1.01);
+        box-shadow: 0 6px 16px rgba(47, 122, 67, 0.25);
+    }
+
+    /* Zelené jemné světlo */
+    .info-box::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: radial-gradient(circle at center, rgba(47, 122, 67, 0.08), transparent 70%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 0;
+    }
+
+    .info-box:hover::before {
+        opacity: 1;
+    }
+
+    .info-box {
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    /* ===== LISA – čistý a optimalizovaný blok ===== */
+    .lisa-box {
+        background-color: #fff;
+        border-left: 6px solid #2f7a43;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        padding: 30px 40px;
+        margin-bottom: 50px;
+        animation: fadeUp 1.2s ease-out forwards;
+    }
+
+    .lisa-box h2 {
+        color: #2f7a43;
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    /* ===== Rozložení textu a obrázků ===== */
+    .lisa-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    .lisa-text {
+        flex: 1 1 60%;
+        text-align: justify;
+        line-height: 1.7;
+        font-size: 1.05rem;
+    }
+
+    /* ===== Seznam kategorií ===== */
+    .lisa-list {
+        list-style: none;
+        padding: 0;
+        margin: 15px 0;
+    }
+
+    .lisa-list li {
+        background-color: #f8f8f8;
+        border-left: 5px solid #2f7a43;
+        margin-bottom: 10px;
+        padding: 10px 15px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .lisa-list li:hover {
+        background-color: #e8f5ee;
+        transform: scale(1.02);
+    }
+
+    /* ===== Obrázky LISA ===== */
+    .lisa-images {
+        flex: 1 1 35%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .lisa-images img {
+        width: 100%;
+        max-width: 320px;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        cursor: pointer;
+    }
+
+    .lisa-images img:hover {
+        transform: scale(1.15);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+        z-index: 5;
+    }
+
+    /* ===== Responzivní verze ===== */
+    @media (max-width: 950px) {
+        .lisa-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lisa-text {
+            flex: 1 1 100%;
+        }
+
+        .lisa-images {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .lisa-images img {
+            width: 45%;
+            max-width: 250px;
+        }
+    }
+
+
+
+    /* Responzivní verze */
+    @media (max-width: 950px) {
+        .lisa-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lisa-text {
+            flex: 1 1 100%;
+        }
+
+        .lisa-images {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .lisa-images img {
+            width: 45%;
+            max-width: 250px;
+        }
+    }
+
+    .lisa-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .lisa-text {
+        flex: 1 1 60%;
+    }
+
+    .lisa-images {
+        flex: 1 1 35%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        perspective: 1000px;
+    }
+
+    .lisa-images img {
+        width: 100%;
+        max-width: 350px;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        animation: lisaZoom 5s ease-in-out infinite;
+        transform-origin: center center;
+    }
+
+    @keyframes lisaZoom {
+        0% { transform: scale(1) rotate(0deg); }
+        45% { transform: scale(1.3) rotate(0.5deg); }
+        55% { transform: scale(1.3) rotate(-0.5deg); }
+        100% { transform: scale(1) rotate(0deg); }
+    }
+    /* ===== LISA – obrázky napravo ===== */
+    .lisa-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    .lisa-text {
+        flex: 1 1 60%;
+        text-align: justify;
+        line-height: 1.7;
+        font-size: 1.05rem;
+    }
+
+    .lisa-images {
+        flex: 1 1 35%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .lisa-images img {
+        width: 100%;
+        max-width: 320px;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        cursor: pointer;
+    }
+
+    .lisa-images img:hover {
+        transform: scale(1.15);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+        z-index: 5;
+    }
+
+    /* 📱 Responsivní zobrazení */
+    @media (max-width: 950px) {
+        .lisa-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lisa-text {
+            flex: 1 1 100%;
+        }
+
+        .lisa-images {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .lisa-images img {
+            width: 45%;
+            max-width: 250px;
+        }
+    }
+
+    /* ===== Obrázek ČSÚ mapy s tooltipem ===== */
+    .iframe-map {
+        margin-top: 20px;
+        border-radius: 10px;
+        overflow: visible;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        position: relative;
+    }
+
+    .iframe-map:hover {
+        transform: scale(1.01);
+        box-shadow: 0 6px 25px rgba(47, 122, 67, 0.3);
+    }
+
+    .csu-map-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+
+    .csu-map-img {
+        width: 100%;
+        max-width: 900px;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        display: block;
+        margin: 20px auto;
+    }
+
+    .csu-map-img:hover {
+        transform: scale(1.03);
+        box-shadow: 0 6px 25px rgba(47, 122, 67, 0.3);
+    }
+
+    /* ===== Tooltip ===== */
+    .csu-map-wrapper::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: 110%;
+        left: 50%;
+        transform: translateX(-50%) translateY(8px);
+        background-color: rgba(47, 122, 67, 0.95);
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.25s ease;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        z-index: 1000;
+    }
+
+    .csu-map-wrapper::before {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(8px);
+        border-width: 6px;
+        border-style: solid;
+        border-color: rgba(47, 122, 67, 0.95) transparent transparent transparent;
+        opacity: 0;
+        transition: all 0.25s ease;
+        z-index: 1000;
+    }
+
+    .csu-map-wrapper:hover::after,
+    .csu-map-wrapper:hover::before {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    /* ===== Interaktivní slepá mapa - styl ===== */
+    .interactive-map {
+        margin-top: 30px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .interactive-map:hover {
+        transform: scale(1.01);
+        box-shadow: 0 6px 25px rgba(47, 122, 67, 0.25);
+    }
+
+    .interactive-map iframe {
+        width: 100%;
+        height: 700px;
+        border: none;
+        border-radius: 10px;
+        display: block;
+    }
+
+
+
+
+    /* ===== Přepínač tématu (světlý / tmavý) ===== */
+    .theme-toggle {
+        position: fixed;
+        bottom: 20px;
+        right: 25px;
+        background: #2f7a43;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        font-size: 22px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        z-index: 1000;
+    }
+    .theme-toggle:hover {
+        transform: scale(1.1);
+        background: #3fa45a;
+    }
+
+    /* 🌙 Tmavý motiv – sjednocený a profesionální vzhled */
+    body.dark-mode {
+        background: #0f1a12;
+        color: #e6e6e6;
+        transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    /* Navigace */
+    body.dark-mode header {
+        background-color: #1b3322;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+    body.dark-mode .navbar a {
+        color: #eaeaea;
+    }
+    body.dark-mode .navbar a:hover {
+        color: #7fe08f;
+    }
+
+    /* Info sekce */
+    body.dark-mode .info-section {
+        background-color: #16261a;
+        color: #ddd;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Boxy */
+    body.dark-mode .info-box {
+        background-color: #1e3525;
+        border-left-color: #3fa45a;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+    }
+    body.dark-mode .info-box h2 {
+        color: #7fe08f;
+    }
+    body.dark-mode .info-box p,
+    body.dark-mode .info-box li {
+        color: #d8d8d8;
+    }
+
+    /* Odkazy */
+    body.dark-mode a,
+    body.dark-mode .gis-link {
+        color: #7fe08f;
+    }
+    body.dark-mode a:hover,
+    body.dark-mode .gis-link:hover {
+        color: #a3f7b9;
+        text-shadow: 0 0 8px rgba(127, 224, 143, 0.4);
+    }
+
+    /* Tlačítka */
+    body.dark-mode .main-btn {
+        background-color: #2f7a43;
+        color: #fff;
+    }
+    body.dark-mode .main-btn:hover {
+        background-color: #3fa45a;
+    }
+
+    /* Footer */
+    body.dark-mode footer {
+        background-color: #1b3322;
+        color: #b8b8b8;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* LISA obrázky */
+    body.dark-mode .lisa-images img {
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.8);
+    }
+
+
+    body.dark-mode {
+        background: #000 !important;
+        color: #fff !important;
+    }
+
+
+
+
+}
+
